@@ -1,25 +1,61 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
+const App = () => {
+  const [produto, setproduto] = React.useState('');
+  const [cor, setCor] = React.useState('');
+
+  function handleChange({ target }) {
+    setproduto(target.value);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <form>
+        <h2>Cores</h2>
+        <label htmlFor="">
+          <input
+            type="radio"
+            onChange={(event)=> setCor(event.target.value)}
+            value="azul"
+            checked={cor === 'azul'}
+          />
+          Azul
+        </label>
+
+        <label htmlFor="">
+          <input
+            type="radio"
+            onChange={(event)=> setCor(event.target.value)}
+            value="vermelho"
+            checked = {cor === 'vermelho'}
+          />
+          Vermelho
+        </label>
+
+
+        {produto}
+        <h2>Produtos</h2>
+        <label htmlFor="">
+          <input
+            type="radio"
+            onChange={handleChange}
+            value="smartphone"
+            checked={produto === 'smartphone'}
+          />
+          Smartphone
+        </label>
+        <label htmlFor="">
+          <input
+            type="radio"
+            onChange={handleChange}
+            value="notebook"
+            checked={produto === 'notebook'}
+          />
+          Notebook
+        </label>
+      </form>
+    </>
   );
-}
+};
 
 export default App;
